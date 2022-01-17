@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/k-sonoda-biztex/wdio-testing/issues"
   },
-  "homepage": "https://github.com/k-sonoda-biztex/wdio-testing#readme"
+  "homepage": "https://github.com/k-sonoda-biztex/wdio-testing#readme",
+  "devDependencies": {
+    "@wdio/cli": "^7.16.13"
+  }
 }
