@@ -4,9 +4,8 @@ services:
     image: selenium/node-chrome:4.1.0-20211123
     shm_size: 2gb
     depends_on:
-      - selenium-hub
-    profiles:
-      - browser
+      selenium-hub:
+        condition: service_healthy
     ports:
       - 5900:5900
     environment:
@@ -21,8 +20,6 @@ services:
       - /tmp/videos:/videos
     depends_on:
       - chrome
-    profiles:
-      - browser
     environment:
       - DISPLAY_CONTAINER_NAME=chrome
       - FILE_NAME=chrome_video.mp4
@@ -30,9 +27,12 @@ services:
   selenium-hub:
     image: selenium/hub:4.1.0-20211123
     container_name: selenium-hub
-    profiles:
-      - browser
     ports:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "localhost:4444/wd/hub/status"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
