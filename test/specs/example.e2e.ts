@@ -9,6 +9,9 @@ describe("Example ページは", () => {
     await (
       await browser.getByText("IANA-managed Reserved Domains")
     ).waitForExist();
+    // expect(
+    //   await browser.getByText("IANA-managed Reserved Domains")
+    // ).toBeDefined();
     // await browser.debug();
   });
 });
