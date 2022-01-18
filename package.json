@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "wdio test/wdio.conf.ts",
-    "lint": "eslint 'test/**/*.ts'",
+    "lint": "npm run lint:prettier && npm run lint:eslint",
+    "lint:eslint": "eslint 'test/**/*.ts'",
+    "lint:prettier": "prettier --check 'test/**/*.ts'",
     "debug:test": "wdio test/wdio.local.conf.ts",
     "pretest": "docker-compose up -d chrome_video",
     "posttest": "docker-compose down"
@@ -39,6 +41,7 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
+    "prettier": "^2.5.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4",
     "wdio-wait-for": "^2.2.1"
